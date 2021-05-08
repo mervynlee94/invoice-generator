@@ -6,11 +6,6 @@ const { roles } = require('../config/roles');
 
 const userSchema = mongoose.Schema(
   {
-    name: {
-      type: String,
-      required: true,
-      trim: true,
-    },
     email: {
       type: String,
       required: true,
@@ -43,6 +38,64 @@ const userSchema = mongoose.Schema(
     isEmailVerified: {
       type: Boolean,
       default: false,
+    },
+    companyInfo: {
+      businessRegistrationNumber: {
+        type: String,
+      },
+      name: {
+        type: String,
+      },
+      email: {
+        type: String,
+        trim: true,
+        lowercase: true,
+        validate(value) {
+          if (value && !validator.isEmail(value)) {
+            throw new Error('Invalid email');
+          }
+        },
+      },
+      address: {
+        street: {
+          type: String,
+        },
+        zipCode: {
+          type: String,
+        },
+        city: {
+          type: String,
+        },
+        state: {
+          type: String,
+        },
+      },
+      contactNumber: {
+        type: String,
+      },
+      logo: {
+        type: Buffer,
+      },
+      paymentInfo: {
+        bankTransfer: {
+          bankName: {
+            type: String,
+          },
+          bankAccountNumber: {
+            type: String,
+          },
+        },
+      },
+    },
+    invoiceInfo: {
+      prefix: {
+        type: String,
+        default: 'INV',
+      },
+      startCounter: {
+        type: Number,
+        default: 1,
+      },
     },
   },
   {
