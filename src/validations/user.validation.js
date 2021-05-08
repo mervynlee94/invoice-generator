@@ -5,14 +5,13 @@ const createUser = {
   body: Joi.object().keys({
     email: Joi.string().required().email(),
     password: Joi.string().required().custom(password),
-    name: Joi.string().required(),
     role: Joi.string().required().valid('user', 'admin'),
   }),
 };
 
 const getUsers = {
   query: Joi.object().keys({
-    name: Joi.string(),
+    email: Joi.string(),
     role: Joi.string(),
     sortBy: Joi.string(),
     limit: Joi.number().integer(),
@@ -34,7 +33,28 @@ const updateUser = {
     .keys({
       email: Joi.string().email(),
       password: Joi.string().custom(password),
-      name: Joi.string(),
+      companyInfo: Joi.object().keys({
+        businessRegistrationNumber: Joi.string(),
+        name: Joi.string(),
+        email: Joi.string().email(),
+        address: Joi.object().keys({
+          street: Joi.string(),
+          zipCode: Joi.string(),
+          city: Joi.string(),
+          state: Joi.string(),
+        }),
+        contactNumber: Joi.string(),
+        paymentInfo: Joi.object().keys({
+          bankTransfer: Joi.object().keys({
+            bankName: Joi.string(),
+            bankAccountNumber: Joi.string(),
+          }),
+        }),
+        invoiceInfo: Joi.object().keys({
+          prefix: Joi.string(),
+          startCounter: Joi.number(),
+        }),
+      }),
     })
     .min(1),
 };
