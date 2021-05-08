@@ -37,12 +37,9 @@ module.exports = router;
  *           schema:
  *             type: object
  *             required:
- *               - name
  *               - email
  *               - password
  *             properties:
- *               name:
- *                 type: string
  *               email:
  *                 type: string
  *                 format: email
@@ -53,7 +50,6 @@ module.exports = router;
  *                 minLength: 8
  *                 description: At least one number and one letter
  *             example:
- *               name: fake name
  *               email: fake@example.com
  *               password: password1
  *     responses:
@@ -267,7 +263,7 @@ module.exports = router;
  * @swagger
  * /auth/verify-email:
  *   post:
- *     summary: verify email
+ *     summary: Verify email
  *     tags: [Auth]
  *     parameters:
  *       - in: query
