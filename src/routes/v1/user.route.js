@@ -42,13 +42,10 @@ module.exports = router;
  *           schema:
  *             type: object
  *             required:
- *               - name
  *               - email
  *               - password
  *               - role
  *             properties:
- *               name:
- *                 type: string
  *               email:
  *                 type: string
  *                 format: email
@@ -62,7 +59,6 @@ module.exports = router;
  *                  type: string
  *                  enum: [user, admin]
  *             example:
- *               name: fake name
  *               email: fake@example.com
  *               password: password1
  *               role: user
@@ -88,10 +84,10 @@ module.exports = router;
  *       - bearerAuth: []
  *     parameters:
  *       - in: query
- *         name: name
+ *         name: email
  *         schema:
  *           type: string
- *         description: User name
+ *         description: User email
  *       - in: query
  *         name: role
  *         schema:
@@ -196,8 +192,6 @@ module.exports = router;
  *           schema:
  *             type: object
  *             properties:
- *               name:
- *                 type: string
  *               email:
  *                 type: string
  *                 format: email
@@ -207,10 +201,66 @@ module.exports = router;
  *                 format: password
  *                 minLength: 8
  *                 description: At least one number and one letter
+ *               companyInfo:
+ *                  type: object
+ *                  properties:
+ *                    businessRegistrationNumber:
+ *                      type: string
+ *                    name:
+ *                      type: string
+ *                    email:
+ *                      format: email
+ *                      type: string
+ *                    address:
+ *                      type: object
+ *                      properties:
+ *                        street:
+ *                          type: string
+ *                        zipCode:
+ *                          type: string
+ *                        city:
+ *                          type: string
+ *                        state:
+ *                          type: string
+ *                    contactNumber:
+ *                      type: string
+ *                    paymentInfo:
+ *                      type: object
+ *                      properties:
+ *                        bankTransfer:
+ *                          type: object
+ *                          properties:
+ *                            bankName:
+ *                              type: string
+ *                            bankAccountNumber:
+ *                              type: string
+ *               invoiceInfo:
+ *                 type: object
+ *                 properties:
+ *                   prefix:
+ *                     type: string
+ *                   startCounter:
+ *                     type: number
  *             example:
- *               name: fake name
  *               email: fake@example.com
  *               password: password1
+ *               companyInfo:
+ *                 businessRegistrationNumber: '201901000005'
+ *                 name: Urban Algo
+ *                 email: fake@example.com
+ *                 address:
+ *                   street: 88-16-07, Cangkat Bukit Gambir 2
+ *                   zipCode: '11700'
+ *                   city: Gelugor
+ *                   state: Pulau Pinang
+ *                 contactNumber: +6016-4067895
+ *                 paymentInfo:
+ *                   bankTransfer:
+ *                     bankName: Maybank
+ *                     bankAccountNumber: '157157914061'
+ *               invoiceInfo:
+ *                 prefix: INV
+ *                 startCounter: 1
  *     responses:
  *       "200":
  *         description: OK
