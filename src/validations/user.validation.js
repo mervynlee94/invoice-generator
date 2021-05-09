@@ -31,7 +31,6 @@ const updateUser = {
   }),
   body: Joi.object()
     .keys({
-      email: Joi.string().email(),
       password: Joi.string().custom(password),
       companyInfo: Joi.object().keys({
         businessRegistrationNumber: Joi.string(),

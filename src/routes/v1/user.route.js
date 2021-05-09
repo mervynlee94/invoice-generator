@@ -192,10 +192,6 @@ module.exports = router;
  *           schema:
  *             type: object
  *             properties:
- *               email:
- *                 type: string
- *                 format: email
- *                 description: must be unique
  *               password:
  *                 type: string
  *                 format: password
@@ -242,7 +238,6 @@ module.exports = router;
  *                   startCounter:
  *                     type: number
  *             example:
- *               email: fake@example.com
  *               password: password1
  *               companyInfo:
  *                 businessRegistrationNumber: '201901000005'
