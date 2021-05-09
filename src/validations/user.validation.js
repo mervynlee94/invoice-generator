@@ -50,10 +50,10 @@ const updateUser = {
             bankAccountNumber: Joi.string(),
           }),
         }),
-        invoiceInfo: Joi.object().keys({
-          prefix: Joi.string(),
-          startCounter: Joi.number(),
-        }),
+      }),
+      invoiceInfo: Joi.object().keys({
+        prefix: Joi.string(),
+        startCounter: Joi.number(),
       }),
     })
     .min(1),
