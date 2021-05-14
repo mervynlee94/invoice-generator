@@ -92,7 +92,7 @@ const userSchema = mongoose.Schema(
         type: String,
         default: 'INV',
       },
-      startCounter: {
+      nextCounter: {
         type: Number,
         default: 1,
       },

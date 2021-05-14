@@ -55,12 +55,22 @@ module.exports = router;
  *                 format: password
  *                 minLength: 8
  *                 description: At least one number and one letter
+ *               invoiceInfo:
+ *                 type: object
+ *                 properties:
+ *                   prefix:
+ *                     type: string
+ *                   nextCounter:
+ *                     type: number
  *               role:
  *                  type: string
  *                  enum: [user, admin]
  *             example:
  *               email: fake@example.com
  *               password: password1
+ *               invoiceInfo:
+ *                 prefix: INV
+ *                 nextCounter: 1
  *               role: user
  *     responses:
  *       "201":
@@ -235,7 +245,7 @@ module.exports = router;
  *                 properties:
  *                   prefix:
  *                     type: string
- *                   startCounter:
+ *                   nextCounter:
  *                     type: number
  *             example:
  *               password: password1
@@ -255,7 +265,7 @@ module.exports = router;
  *                     bankAccountNumber: '157157914061'
  *               invoiceInfo:
  *                 prefix: INV
- *                 startCounter: 1
+ *                 nextCounter: 1
  *     responses:
  *       "200":
  *         description: OK

@@ -6,6 +6,10 @@ const createUser = {
     email: Joi.string().required().email(),
     password: Joi.string().required().custom(password),
     role: Joi.string().required().valid('user', 'admin'),
+    invoiceInfo: Joi.object().keys({
+      prefix: Joi.string(),
+      nextCounter: Joi.number(),
+    }),
   }),
 };
 
@@ -52,7 +56,7 @@ const updateUser = {
       }),
       invoiceInfo: Joi.object().keys({
         prefix: Joi.string(),
-        startCounter: Joi.number(),
+        nextCounter: Joi.number(),
       }),
     })
     .min(1),
